@@ -13,10 +13,9 @@ p
 	color:#00ffaa;
 	
 }
-ul
-{
-	color:#00ffaa;
-	
+ul {
+    text-align: center;
+    list-style-type: none;
 }
 li
 {
