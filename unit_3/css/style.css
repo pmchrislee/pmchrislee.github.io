@@ -2,18 +2,18 @@
 
 body
 {
-	color:#00ffaa;
+	color:black;
 	font-family: 'Open Sans', sans-serif;
 
 }
 h1
 {
-	color:#00ffaa;
+	color:black;
 	
 }
 p
 {
-	color:#00ffaa;
+	color:black;
 	font-family: 'Open Sans', sans-serif;
 	
 }
@@ -23,12 +23,12 @@ ul {
 }
 li
 {
-	color:#00ffaa;
+	color:#black;
 	
 }
 img
 {
-	color:#00ffaa;
+	color:#black;
 	
 }
 #slogan
