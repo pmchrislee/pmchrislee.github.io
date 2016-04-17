@@ -2,18 +2,18 @@
 
 body
 {
-	color:#00ffaa;
+	color:white;
 	font-family: 'Open Sans', sans-serif;
 
 }
 h1
 {
-	color:#00ffaa;
+	color:white;
 	
 }
 p
 {
-	color:#00ffaa;
+	color:white;
 	font-family: 'Open Sans', sans-serif;
 	
 }
@@ -23,16 +23,47 @@ ul {
 }
 li
 {
-	color:#00ffaa;
+	color:white;
 	
 }
 img
 {
-	color:#00ffaa;
+	color:white;
 	
 }
 #slogan
 {
     font-style: italic;
 
+}
+header {
+    background-color: #FFED74;
+    border: 1px black solid;
+    padding: 20px;
+}
+nav {
+    background-color: #E8C66A;
+    border: 1px black solid;
+    padding: 20px;
+}
+aside {
+    background-color: #FFC675;
+    border: 1px black solid;
+    padding: 20px;
+}
+article {
+    background-color: #E89C6C;
+    border: 1px black solid;
+    padding: 20px;
+}
+
+footer {
+    background-color: #FF957E;
+    border: 1px black solid;
+    padding: 20px;
+}
+section {
+   background-color: #FFE2B8;
+    border: 1px black solid;
+    padding: 20px;
 }
