@@ -2,6 +2,8 @@
 <input type="text" id="searchString" value="" />
 <input type="button" id="searchButton" value="Search"/>
 
+<h1></h1>
+
 <script>
 
 var searchString = document.querySelector("#searchString");
@@ -12,6 +14,8 @@ searchButton.addEventListener("click", function(){
         console.log("empty string");
     } else {
         console.log(searchString.value);
+        document.querySelector("h1").innerHTML = searchString.value; 
+
     }
 });
 
