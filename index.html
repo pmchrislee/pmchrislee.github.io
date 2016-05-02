@@ -1,4 +1,6 @@
-<html><body>
+<html>
+<head> <style>.test{color:red;}</style> </head>
+<body> 
 <input type="text" id="searchString" value="" />
 <input type="button" id="searchButton" value="Search"/>
 
@@ -14,7 +16,7 @@ searchButton.addEventListener("click", function(){
         console.log("empty string");
     } else {
         console.log(searchString.value);
-        document.querySelector("h1").innerHTML = searchString.value; 
+        document.querySelector("h1").innerHTML = "<span class='text'>" + searchString.value + "</span>"; 
 
     }
 });
