@@ -1,0 +1,19 @@
+<html><body>
+<input type="text" id="searchString" value="" />
+<input type="button" id="searchButton" />
+
+<script>
+
+var searchString = document.querySelector("#searchString");
+var searchButton = document.querySelector("#searchButton");
+
+searchButton.addEventListener("click", function(){
+    if ( searchString.value === "" ){
+        console.log("empty string");
+    } else {
+        console.log(searchString.value);
+    }
+});
+
+</script>
+</body></html>
