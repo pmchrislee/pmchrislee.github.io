@@ -1,0 +1,76 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <button id="one">one</button>
+        <button id="two">two</button>
+        <button id="three">three</button>
+        <script>
+            
+var myNumber = 3.14;
+var myString = "Hi";
+var myObject = {}; //object
+var myDate = new Date(); //specific flavor of object
+var myBoolean = true;
+var myUndefined = undefined;
+var myNull = null;
+var myFunction = function(){}
+
+var myArray = []; //empty array
+
+var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+console.log(days.length); //7 because "length" is 1-based (counting starts at 1)
+
+console.log(days[7]); //undefined!!! because index is 0-based (counting starts at zero)
+
+console.log(days[0]); //"Sun"
+console.log(days[3]); //"Wed"
+console.log(days[6]); //"Sat"
+
+var anyArray = []; //just so we don't get an error
+anyArray[anyArray.length]; //will always be undefined
+anyArray[anyArray.length -1]; //will always be the last element of array
+
+for (var i = 0; i < days.length; i++){ //beginner iteration
+    console.log(days[i]); //"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
+}
+
+days.forEach(function(day){ //advanced iteration
+    console.log(day); //"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
+});
+
+//individual event listeners - doesn't "scale" well
+document.querySelector("#one").addEventListener("click", function(){
+    console.log("one");
+});
+document.querySelector("#two").addEventListener("click", function(){
+    console.log("two");
+});
+document.querySelector("#three").addEventListener("click", function(){
+    console.log("three");
+});
+
+//using querySelctorAll()
+var buttons = document.querySelectorAll("button"); //returns an array-like object containing all HTML buttons
+
+//use a for loop to assign event listeners
+for (var i = 0; i < buttons.length; i++){
+    buttons[i].addEventListener("click", function(){
+        //assume buttons[i].function
+        //"this" is the verb's way of knowing what the noun is
+        console.log(this.id);
+    });
+}
+
+//use forEach to assign event listeners
+[].forEach.call(buttons, function(button){
+    button.addEventListener("click", function(){
+        console.log(button.id);
+    });
+});
+            
+        </script>
+    </body>
+</html>

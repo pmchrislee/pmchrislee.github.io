@@ -1,0 +1,25 @@
+<html>
+<head> <style>.test{color:red;}</style> </head>
+<body> 
+<input type="text" id="searchString" value="" />
+<input type="button" id="searchButton" value="Search"/>
+
+<h1></h1>
+
+<script>
+
+var searchString = document.querySelector("#searchString");
+var searchButton = document.querySelector("#searchButton");
+
+searchButton.addEventListener("click", function(){
+    if ( searchString.value === "" ){
+        console.log("empty string");
+    } else {
+        console.log(searchString.value);
+        document.querySelector("h1").innerHTML = "<span class='test'>" + searchString.value + "</span>"; 
+
+    }
+});
+
+</script>
+</body></html>
