@@ -106,4 +106,8 @@ section {
     clear: both;
     height: 0;
 }
-
+@media screen only and (max-width: 768px) {
+  #two_column {
+    background-color:blue;
+  }
+}
