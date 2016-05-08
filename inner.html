@@ -1,0 +1,78 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1></h1>
+
+        <button>One</button>
+        <button>Two</button>
+        <button>Three</button>
+
+        <script>
+            var buttons = document.querySelectorAll("button");
+            for (var i = 0; i < buttons.length; i++){
+                buttons[i].addEventListener("click", function(){
+                    //assume buttons[i].function
+                    //"this" is the verb's way of knowing what the noun is
+                    console.log(this.textContent);
+
+                    // document.querySelector("h1").innerHTML += this.textContent + " ";
+                    var element = document.querySelector("h1");
+                    var text = this.textContent + " ";
+                    toggleText(element, text);
+                });
+            }
+
+            function addText(element, text){
+                //add text to the innerHTML of the element
+                //IF the text doesn't already exist
+                if (!hasText(element, text)){
+                    element.innerHTML += text;
+                }
+            }
+
+            function hasText(element, text){
+                //if element innerHTML contains the text string, return true, else return false
+
+                //version one (if/else):
+                // if (element.innerHTML.indexOf(text) >= 0){
+                //     return true;
+                // } else {
+                //     return false;
+                // }
+
+                //version two (ternary):
+                // return (element.innerHTML.indexOf(text) >= 0) ? true : false;
+
+                //version three (comparator):
+                return element.innerHTML.indexOf(text) >= 0;
+            }
+
+            function removeText(element, text){
+                //if text exists in the element innerHTML, delete it
+                if (hasText(element, text)){
+                    element.innerHTML = element.innerHTML.replace(text, "");
+                }
+            }
+
+            function toggleText(element, text){
+                if (hasText(element, text)){
+                    removeText(element, text);
+                } else {
+                    addText(element, text);
+                }
+            }
+
+        </script>
+    </body>
+</html>
+
+<!--
+
+haystack.indexOf(needle);
+
+console.log("Have a nice day".indexOf("v")); //2 (zero-based index counting)
+console.log("Have a nice day".indexOf("Q")); //-1 ("Q" not found in the string "Have a nice day")
+
+-->

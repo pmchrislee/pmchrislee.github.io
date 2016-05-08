@@ -1,0 +1,76 @@
+<html><body><script>
+
+
+    var myObj = {}; //object literal (defined and assigned in same line of code)
+
+    myObj.name = "Henry"; //object property
+    myObj.sayName = function(){ console.log("Henry"); } //object method
+
+    console.log(myObj.name); //Henry
+    myObj.sayName(); //Henry
+
+
+    //using object notation:
+    //different syntax from regular JavaScript
+    //uses colons and commas instead of equal signs and semi-colons
+    var kitten = {
+
+        "name": "Whiskers",
+        "sayName": function(){ console.log("Whiskers"); }
+
+    };
+
+    console.log(kitten.name); //Whiskers
+    kitten.sayName(); //Whiskers
+
+
+    //not good computer science to use "Whiskers" in two locations
+    //what we need is a way for kitten.sayName() function to reference kitten.name
+    //the answer: the "this" keyword
+
+    //"this" is a reference to the object that "owns" the function we're using
+
+    var kitten = {
+
+        "name": "Whiskers",
+        "whoami": function(){ console.log(this); },
+        "sayName": function(){ console.log(this.name); },
+        "getName": function(){ return this.name; },
+        "speak": function(){ console.log("My name is " + this.getName()); }
+
+    };
+
+    kitten.whoami(); //the entire kitten object
+    kitten.sayName(); //Whiskers
+
+    //noun.verb(): from within the verb function, "this" refers to noun
+
+    console.log(kitten.getName()); //Whiskers
+    kitten.speak(); //My name is Whiskers
+    
+    
+    //common noun.verb pairs:
+    //console.log()
+    //document.querySelector()
+    //element.addEventListener()
+    //element.innerHTML
+    
+    console.log(console);
+    console.log(document);
+    console.log(window);
+    
+    console.log(this);
+    
+    console.log(this.kitten);
+    
+    
+    //everything has an owning object
+    
+    function sayHello(){ console.log("Hello"); }
+    
+    //these two calls do exactly the same thing:
+    sayHello();
+    window.sayHello();
+
+
+</script></body></html>
