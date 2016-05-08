@@ -106,12 +106,12 @@ section {
     clear: both;
     height: 0;
 }
-@media screen only and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   #two_column {
     background-color:blue;
   }
 }
-@media screen only and (max-width: 400px) {
+@media only screen and (max-width: 400px) {
  #two_column {
     background-color:green;
   }
