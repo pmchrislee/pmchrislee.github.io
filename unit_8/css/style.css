@@ -127,12 +127,12 @@ input[type=text]:focus {
 }
 
 @media only screen and (max-width: 768px) {
-  #two_column {
+  body {
     background-color:blue;
   }
 }
 @media only screen and (max-width: 400px) {
- #two_column {
+ body {
     background-color:green;
   }
 }
