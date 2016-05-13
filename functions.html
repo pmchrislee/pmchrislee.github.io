@@ -1,0 +1,117 @@
+<html>
+    <body>
+        <script>
+
+
+//function declaration:
+function myFunc(){
+    console.log("myFunc");
+}
+
+//function call:
+myFunc(); //logs "myFunc" to the console
+
+
+function myFunc2(sayWhat){ //sayWhat is a special variable called an argument
+    //equiv of var sayWhat = "Hello"; (or whatever is passed in as a parameter)
+    console.log(sayWhat);
+}
+
+//inside the function declaration, the variable name used as an argument will be set to equal the parameter
+//inside myFunc2, the equivalent of
+//    var sayWhat = "Hello";
+//is automatically applied
+
+//logs "Hello"
+myFunc2("Hello"); //the "Hello" in the parentheses is a parameter
+myFunc2("Whatever"); //logs "Whatever"
+
+function myFunc3(){
+    return "Hi, there!";
+}
+
+console.log(   myFunc3()   ); //logs "Hi, there!"
+
+//when you see a function call, you can think about replacing that call with the function's return value
+console.log(   "Hi, there!"   ); //myFunc3() "resolves" to the string "Hi, there!"
+
+console.log(   myFunc()   ); //myFunc() is called, logging "myFunc" but it has no explicit return value, so it resolves to "undefined"
+
+
+//CHAINING:
+//write a function that reverses a string:
+function revStr(str){
+    //argument str will equal whatever is submitted as a parameter
+    //str.split("") creates an array (resolves to an array) of every character in str
+    //str.split("").reverse() acts on the array and reverses it
+    //str.split("").reverse().join("") acts on the reversed array and converts it back into a string
+    //that reversed string is returned
+    return str.split("").reverse().join(""); //ultimately revStr resolves to (returns) a string
+}
+
+//split (converts a string into an array):
+console.log("test".split("")); //logs an array: ["t", "e", "s", "t"]
+console.log("test".split("e")); //logs an array: ["t", "st"]
+console.log("this is a test".split("s")); //logs an array: ["thi", " i", " a te", "t"];
+
+//join (concatenates an array into a string):
+console.log(["thi", " i", " a te", "t"].join("s")); //logs "this is a test"
+console.log(["thi", " i", " a te", "t"].join("")); //logs "thi i a tet"
+
+console.log(revStr("I love JavaScript!")); //"!tpircSavaJ evol I"
+
+
+//SCOPE:
+//every variable has a scope: it exists in one area and not in another
+var myGlobal = "Hello"; //this is a global variable...it exists anywhere in the app
+
+function myFunc4(){
+    var myFunctionScopeVar = "Hi"; //this is a function scope variable...it exists ONLY inside the function (when the function ends, the variable is deleted)
+}
+
+console.log(myGlobal); //logs "Hello"
+//console.log(myFunctionScopeVar); //logs undefined (it doesn't exist outside the function)
+
+//to keep your entire app out of the global scope, one popular method is to enclose everyting in an immediately invoking function expression (IIFE):
+(function(){
+    
+    //my app goes here
+    var myVar = "Hello, again!"; //this is NOT GLOBAL; it exists only in the IIFE function scope
+    
+    //you still have access to everything in global scope:
+    console.log(myGlobal);
+    console.log(   revStr("I'm inside an IIFE!")   ); //the function is also in global scope
+    
+    //you can define an inner function that only exists inside the IIFE:
+    function innerFunction(){
+        console.log("I'm inside an IIFE!");
+    }
+    innerFunction();
+    
+})();
+
+//outside the IIFE:
+//console.log(myVar); //undefined
+//innerFunction(); //"Uncaught ReferenceError: myFunctionScopeVar is not defined": there is no function of this name in global scope
+
+//CLOSURE:
+//inner functions can access variables defined within the outer function, but not vice versa
+function getNext(){
+    var nextNumber = 0;
+    
+    //return an inner function that has access to nextNumber:
+    return function(){
+        nextNumber++;
+        return nextNumber;
+    }
+}
+
+var next = getNext(); //next now equals that inner function
+console.log(next()); //1
+console.log(next()); //2
+console.log(next()); //3 ...
+
+ 
+        </script>
+    </body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tic-Tac-Toe</title>
+        <style>
+            section#horiz {
+                position: absolute;
+                top: 205px;
+                left: 0;
+                width: 330px;
+                height: 110px;
+                border-top: 5px solid black;
+                border-bottom: 5px solid black;
+            }
+            section#vert {
+                position: absolute;
+                top: 100px;
+                left: 105px;
+                width: 110px;
+                height: 330px;
+                border-left: 5px solid black;
+                border-right: 5px solid black;
+            }
+            div {
+                position: absolute;
+                width: 100px;
+                height: 100px;
+                font-family: Arial, sans-serif;
+                text-align: center;
+                font-size: 5em;
+            }
+            div.left {
+                left: 0;
+            }
+            div.center {
+                left: 115px;
+            }
+            div.right {
+                left: 230px;
+            }
+            div.top {
+                top: 100px;
+            }
+            div.middle {
+                top: 215px;
+            }
+            div.bottom {
+                top: 330px;
+            }
+            div.hover {
+                background-color: pink;
+                cursor: pointer;
+            }
+            div.winner {
+                background-color: pink;
+            }
+
+            footer {
+                position: absolute;
+                top: 470px;
+                left: 270px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Tic-Tac-Toe</h1>
+        </header>
+        <aside>
+            <section id="horiz"></section>
+            <section id="vert"></section>
+        </aside>
+        <main>
+            <div class="left top"></div>
+            <div class="left middle"></div>
+            <div class="left bottom"></div>
+            <div class="center top"></div>
+            <div class="center middle"></div>
+            <div class="center bottom"></div>
+            <div class="right top"></div>
+            <div class="right middle"></div>
+            <div class="right bottom"></div>
+        </main>
+        <footer>
+            <button>Restart</button>
+        </footer>
+
+        <script>
+            "use strict";
+
+            var whoseTurn = "x";
+
+            //box mouseover
+            [].forEach.call(document.querySelectorAll("div"), div => {
+                div.addEventListener("mouseover", function(){
+                    if (this.innerHTML === ""){
+                        this.className += " hover";
+                    }
+                });
+            });
+
+            //box mouseout
+            [].forEach.call(document.querySelectorAll("div"), div => {
+                div.addEventListener("mouseout", function(){
+                    this.className = this.className.replace(" hover", "");
+                });
+            });
+
+            //box click
+            [].forEach.call(document.querySelectorAll("div"), div => {
+                div.addEventListener("click", function(){
+                    if (this.innerHTML === ""){
+                        this.innerHTML = whoseTurn;
+                        //check for winner
+                        let boxes = [].filter.call(document.querySelectorAll("div"), div => {
+                            return div.innerHTML === whoseTurn;
+                        });
+                        if (boxes.length >= 3){
+                            let winnerFound = false,
+                                basicCheck = ["left", "center", "right", "top", "middle", "bottom"];
+                            boxes = boxes.map(box => {
+                                return box.className.replace(" hover", "");
+                            }).join(" ");
+                            //horiz and vert checks
+                            basicCheck.forEach(check => {
+                                if ((boxes.match(new RegExp(check, "g")) || []).length === 3){
+                                    [].forEach.call(document.querySelectorAll("." + check), div => {
+                                        div.className += " winner";
+                                    });
+                                    winnerFound = true;
+                                }
+                            });
+                            //diag checks
+                            if ((boxes.match(/center middle/g) || []).length){
+                                if ((boxes.match(/left top/g) || []).length && (boxes.match(/right bottom/g) || []).length){
+                                    [].forEach.call(document.querySelectorAll(".center.middle, .left.top, .right.bottom"), div => {
+                                        div.className += " winner";
+                                    });
+                                    winnerFound = true;
+                                }
+                                if ((boxes.match(/left bottom/g) || []).length && (boxes.match(/right top/g) || []).length){
+                                    [].forEach.call(document.querySelectorAll(".center.middle, .left.bottom, .right.top"), div => {
+                                        div.className += " winner";
+                                    });
+                                    winnerFound = true;
+                                }
+                            }
+                            //if winner, fill empty boxes
+                            if (winnerFound){
+                                [].forEach.call(document.querySelectorAll("div"), div => {
+                                    if (div.innerHTML === ""){
+                                        div.innerHTML = "&nbsp;";
+                                    }
+                                });
+                            }
+                        }
+                        //no winner, swap whoseTurn
+                        if (whoseTurn === "x"){
+                            whoseTurn = "o";
+                        } else {
+                            whoseTurn = "x";
+                        }
+                    }
+                });
+            });
+
+            //restart button
+            document.querySelector("button").addEventListener("click", function(){ //reset game:
+                //x goes first
+                whoseTurn = "x";
+                //remove all x and o from board
+                [].forEach.call(document.querySelectorAll("div"), div => {
+                    div.innerHTML = "";
+                    div.className = div.className.replace(" winner", "");
+                });
+            });
+        </script>
+    </body>
+</html>
