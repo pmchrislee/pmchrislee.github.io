@@ -72,6 +72,12 @@ footer {
     background-color: white;
     border:0;
     padding: 20px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+}
 }
 section {
    background-color: #FFE2B8;
